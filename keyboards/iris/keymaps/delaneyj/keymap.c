@@ -67,22 +67,9 @@ enum custom_keycodes {
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  // [_COLEMAK] = KC_KEYMAP(
-  // //,----+----+----+----+----+----.              ,----+----+----+----+----+----.
-  //    ESC ,EXLM, AT ,HASH,DLR ,PERC,               CIRC,AMPR,ASTR,UNDR,TILD,LGUI,
-  // //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-  //    TAB , Q  , W  , E  , R  , T  ,                Y  , U  , I  , O  , P  ,BSLS,
-  // //|----+----+----+----+----+----|              |----+----+----+- ---+----+----|
-  //    LSFT, A  , S  , D  , F  , G  ,                H  , J  , K  , L  ,SCLN,QUOT,
-  // //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
-  //    LCTL, Z  , X  , C  , V  , B  ,DEL ,     ENT , N  , M  ,COMM,DOT ,SLSH,RGHT,
-  // //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
-  //                      LALT,TTDN,BSPC,       SPC ,TTUP,RCTL
-  // //                  `----+----+----'      `----+----+----'
-  // ),
   [_COLEMAK] = KC_KEYMAP(
   //,----+----+----+----+----+----.              ,----+----+----+----+----+----.
-     ESC ,EXLM, AT ,HASH,DLR ,PERC,               CIRC,AMPR,ASTR,UNDR,TILD,LGUI,
+     ESC ,EXLM, AT ,HASH,DLR ,PERC,               CIRC,AMPR,ASTR,UNDR,GRV ,LGUI,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
      TAB , Q  , W  , F  , P  , G  ,                J  , L  , U  , Y  ,SCLN,BSLS,
   //|----+----+----+----+----+----|              |----+----+----+- ---+----+----|
