@@ -16,32 +16,11 @@ enum custom_keycodes {
   LOWER,
   RAISE,
   // ADJUST,
-  GO_CHANNEL_PULL,
-  GO_CHANNEL_PUSH,
-  GO_VARIABLE_INIT,
   SWITCH_DESKTOPS_LEFT,
   SWITCH_DESKTOPS_RIGHT,
   WINDOWS_RUN
 };
 
-#define KC_MCUP KC_MS_UP
-#define KC_MCDN KC_MS_DOWN
-#define KC_MCLT KC_MS_LEFT
-#define KC_MCRT KC_MS_RIGHT
-#define KC_MCB1 KC_MS_BTN1
-#define KC_MCB2 KC_MS_BTN2
-#define KC_MCB3 KC_MS_BTN3
-#define KC_MCB4 KC_MS_BTN4
-#define KC_MCB5 KC_MS_BTN5
-#define KC_MCWU KC_MS_WH_UP
-#define KC_MCWD KC_MS_WH_DOWN
-#define KC_MCWL KC_MS_WH_LEFT
-#define KC_MCWR KC_MS_WH_RIGHT
-// #define KC_MCA0 KC_MS_ACCEL0
-// #define KC_MCA1 KC_MS_ACCEL1
-// #define KC_MCA2 KC_MS_ACCEL2
-
-#define KC_UNDR KC_UNDERSCORE
 #define KC_WGUI LCTL(KC_LGUI)
 
 #define KC_TTUP TT(_RAISE)
@@ -59,34 +38,25 @@ enum custom_keycodes {
 #define KC_LOWR LOWER
 #define KC_RASE RAISE
 #define KC_RST RESET
-#define KC_BL_S BL_STEP
-#define KC_GOPS GO_CHANNEL_PUSH
-#define KC_GOPL GO_CHANNEL_PULL
-#define KC_GOVR GO_VARIABLE_INIT
+
 
 #define KC_DLFT SWITCH_DESKTOPS_LEFT
 #define KC_DRGT SWITCH_DESKTOPS_RIGHT
 #define KC_WRUN LGUI(KC_R)
+#define KC_EXPL LGUI(KC_E)
+
 //Tap Dance Declarations
 enum {
   TD_ESCAPE_UNDO = 0,
   TD_EQUALS_REDO,
-  // TD_SUPER_ARROW_LEFT,
-  // TD_SUPER_ARROW_RIGHT
 };
 #define KC_TDEZ TD(TD_ESCAPE_UNDO)
 #define KC_TDEY TD(TD_EQUALS_REDO)
-// #define KC_TDSL TD(TD_SUPER_ARROW_LEFT)
-// #define KC_TDSR TD(TD_SUPER_ARROW_RIGHT)
 
 //Tap Dance Definitions
 qk_tap_dance_action_t tap_dance_actions[] = {
-  //Tap once for Esc, twice for Caps Lock
   [TD_ESCAPE_UNDO]  = ACTION_TAP_DANCE_DOUBLE(LCTL(KC_Z), KC_ESC),
   [TD_EQUALS_REDO]  = ACTION_TAP_DANCE_DOUBLE(LCTL(KC_Y), KC_EQL),
-  // [TD_SUPER_ARROW_LEFT] = ACTION_TAP_DANCE_DOUBLE(KC_LEFT, LCTL(KC_LEFT)),
-  // [TD_SUPER_ARROW_RIGHT] =  ACTION_TAP_DANCE_DOUBLE(KC_RIGHT, LCTL(KC_RGHT))
-// Other declarations would go here, separated by commas, if you have them
 };
 
 
@@ -99,34 +69,47 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----|              |----+----+----+- ---+----+----|
      LSFT, A  , R  , S  , T  , D  ,                H  , N  , E  , I  , O  ,RSFT,
   //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
-     LCTL, Z  , X  , C  , V  , B  ,DEL ,         , K  , M  ,COMM,DOT ,SLSH,QUOT,
+     LCTL, Z  , X  , C  , V  , B  ,DEL ,     CALC, K  , M  ,COMM,DOT ,SLSH,QUOT,
   //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
                        LALT,TTDN,BSPC,       SPC ,TTUP,ENT
   //                  `----+----+----'      `----+----+----'
   ),
+  // [_COLEMAK] = KC_KEYMAP(
+  // //,----+----+----+----+----+----.              ,----+----+----+----+----+----.
+  //    TDEZ,EXLM, AT ,HASH,DLR ,PERC,               CIRC,AMPR,ASTR,MINS,GRV ,TDEY,
+  // //|----+----+----+----+----+----|              |----+----+----+----+----+----|
+  //    TAB , Q  , W  , E  , R  , T  ,                Y  , U  , I  , O  , P  ,BSLS,
+  // //|----+----+----+----+----+----|              |----+----+----+- ---+----+----|
+  //    LSFT, A  , S  , D  , F  , G  ,                H  , J  , K  , L  ,SCLN,RSFT,
+  // //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
+  //    , Z  , X  , C  , V  , B  ,DEL ,         , N  , M  ,COMM,DOT ,SLSH,QUOT,
+  // //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
+  //                      LALT,TTDN,BSPC,       SPC ,TTUP,ENT
+  // //                  `----+----+----'      `----+----+----'
+  // ),
   [_LOWER] = KC_KEYMAP(
   //,----+----+----+----+----+----.               ,----+----+----+----+----+----.
      F1  , F2 , F3 , F4 , F5 , F6 ,                F7  , F8 , F9 ,F10 ,F11 ,F12 ,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-         ,SELU, NO , UP ,VOLU,LPRN,                RPRN, P7 , P8 , P9 ,PLUS,ASTR,
+         ,SELU, NO , UP ,VOLU,MNXT,                PMNS, P7 , P8 , P9 ,PPLS,NLCK,
   //|----+----+----+----+----+----|               |----+----+----+----+----+----|
-         ,SELD,LEFT,DOWN,RGHT,LBRC,                RBRC, P4 , P5 , P6 ,MINS,PGUP,
+         ,SELD,LEFT,DOWN,RGHT,MPLY,                PSLS, P4 , P5 , P6 ,PAST,PGUP,
   //|----+----+----+----+----+----+----.     ,----|----+----+----+----+----+----|
-         , NO , NO ,MUTE,VOLD,LCBR,          ,    ,RCBR, P1 , P2 , P3 ,ENT ,PGDN,
+         , NO , NO ,MUTE,VOLD,MNXT,WSCH      ,EXPL,PDOT, P1 , P2 , P3 ,PEQL,PGDN,
   //`----+----+----+--+-+----+----+----/     \----+----+----+----+----+----+----'
-                             ,    ,WRUN,         LGUI, P0 ,ENT   //
+                             ,    ,WRUN,         LGUI, P0 ,PENT   //
   //                    `----+----+----'      ----+----+----'
   ),
 
   [_RAISE] = KC_KEYMAP(
   //,----+----+----+----+----+----.              ,----+----+----+----+----+----.
-     DLFT,    ,    ,    ,    ,GOPS,               GOPL,GOVR,    ,    ,    ,DRGT,
+     DLFT,    ,    ,    ,    ,    ,                   ,    ,    ,    ,    ,DRGT,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-         , NO , NO ,MCUP, NO , NO ,                NO ,MCWL,MCWU,MCWR, NO , NO ,
+         , NO , NO ,MS_U, NO ,LCBR,               RCBR,WH_L,WH_U,WH_R, NO , NO ,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-         , NO ,MCLT,MCDN,MCRT, NO ,                NO ,MCB1,MCWD,MCB2, NO , NO ,
+         , NO ,MS_L,MS_D,MS_R,LPRN,               RPRN,BTN1,WH_D,BTN2, NO , NO ,
   //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
-         , NO , NO , NO , NO , NO ,    ,         , NO ,MCB4,MCB3,MCB5, NO ,RST ,
+         , NO , NO , NO , NO ,LBRC,    ,         ,RBRC,BTN2,BTN3,BTN5, NO ,RST ,
   //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
                            ,    ,    ,             ,    ,
   //                  `----+----+----'        `----+----+----'
@@ -151,14 +134,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       #endif
       persistent_default_layer_set(1UL<<_COLEMAK);
       return false;
-    // case GO_CHANNEL_PULL:
-    //   SEND_STRING("->");
-    //   return false;
-    // case GO_CHANNEL_PUSH:
-    //   SEND_STRING("<-");
-    //   return false;
-    // case GO_VARIABLE_INIT:
-    //   SEND_STRING(":=");
     case SWITCH_DESKTOPS_LEFT:
       SEND_STRING(
         SS_DOWN(X_LCTRL)SS_DOWN(X_LGUI)SS_DOWN(X_LEFT)
